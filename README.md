@@ -4,7 +4,7 @@
 
 ## Audio samples
 
-Speech samples are available at [speech samples page](https://ttslr.github.io/Tacotron-perceptual-loss/).
+Speech samples are available at [speech samples page](https://ttslr.github.io/Expressive-TTS-with-Perceptual-Guidance/).
 
  
 
