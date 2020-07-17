@@ -51,7 +51,7 @@
           <div class="col-md-12">
  
             <h1><a class="text-light">Expressive TTS Training with <br> Frame and Style Reconstruction Loss</h1><br> 
-             <font size=5><span style="color:#000000"> Authors: Rui Liu, Berrak Sisman, Guanglai Gao and Haizhou Li </font><font size=4> <br> National University of Singapore, Singapore</font>  </a>   
+             <font size=5><span style="color:#000000"> Rui Liu, Student Member, IEEE, Berrak Sisman, Member, IEEE, Guanglai Gao,<br> Haizhou Li, Fellow, IEEE</font>  </a>   
             <p>
               <div class="row">
               </div>
@@ -91,11 +91,12 @@ We propose to train a Tacotron system using a combination of two objective funct
                   <div class="big-screen">
                     <br>
                     <h5>We develop five Tacotron-based TTS systems for a comparative study:</h5>
-                    <b> (a) Tacotron</b>: Tacotron model <br>
-                    <b> (b) Tacotron-PL(L)</b>: Tacotron model <br>
-                    <b> (c) Tacotron-PL(M)</b>: Tacotron model <br>
-                    <b> (d) Tacotron-PL(H)</b>: Tacotron model <br>
-                    <b> (e) Tacotron-PL(LMH)</b>: Tacotron model <br>
+                    <b> (a) Tacotron</b>: Tacotron trained with Loss_frame. <br>
+                    <b> (b) Tacotron-PL(L)</b>: Tacotron-PL with uses <b>low-level features</b> in Loss_Style. <br>
+                    <b> (c) Tacotron-PL(M)</b>: Tacotron-PL with uses <b>middle-level features</b> in Loss_Style. <br>
+                    <b> (d) Tacotron-PL(H)</b>: Tacotron-PL with uses <b>high-level features</b> in Loss_Style. <br>
+                    <b> (e) Tacotron-PL(LMH)</b>: Tacotron-PL with uses <b>{low-level features, middle-level features, high-level features}</b> in Loss_Style. <br><br>
+                    * low-level features, middle-level features and high-level features as shown in Fig3.<br>
                     <div style="text-align: center; width: 1100px; border: green solid 0px;">
                     <img align="center" src="features.png"  width="600" height="150"  /><br>
                          Figure 3: xxx
