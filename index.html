@@ -67,22 +67,22 @@
       <div class="row" id="result">
         <div class="col-md-12">
         	<h5>Abstract:</h5> 
-        	We study a novel training strategy for Tacotron-based text-to-speech (TTS) system, that optimizes perceptual quality. One of the key challenges in perceptual modeling, such as style and prosody, is the lack of reference, that makes explicit modeling difficult. The proposed technique doesn't require prosody annotations from training data. It doesn't attempt to model prosody explicitly either, but rather encodes the association between prosody styles with input text using the existing Tacotron framework. This study marks a departure from the style token paradigm where prosody is explicitly modeled by a bank of prosody embeddings.
-We propose to train a Tacotron system using a combination of two objective functions: 1) frame level reconstruction loss, that is calculated between the synthesized and target spectral features; 2) utterance level style reconstruction loss, that is calculated between the deep style features of synthesized and target speech. The proposed style reconstruction loss is intended to optimize Tacotron for improved perceptual quality, that includes spectrum, fundamental frequency (F0), and duration. Experiments show that the proposed training strategy achieves remarkable performance and outperforms a state-of-the-art baseline in both naturalness and expressiveness. To our best knowledge, this is the first study to incorporate utterance level perceptual quality as a loss function into Tacotron training for improved expressiveness.<br>
+        	We propose a novel training strategy for Tacotron-based text-to-speech (TTS) system to improve the expressiveness of speech.  One of the key challenges in prosody modeling is the lack of reference that makes explicit modeling difficult. The proposed technique doesn't require prosody annotations from training data. It doesn't attempt to model prosody explicitly either, but rather encodes the association between input text and its prosody styles using a Tacotron-based TTS framework. Our proposed idea marks a departure from the style token paradigm where prosody is explicitly modeled by a bank of prosody embeddings.
+The proposed training strategy adopts a combination of two objective functions: 1) frame level reconstruction loss, that is calculated between the synthesized and target spectral features; 2) utterance level style reconstruction loss, that is calculated between the deep style features of synthesized and target speech. The proposed style reconstruction loss is formulated as a perceptual loss to ensure that utterance level speech style is taken into consideration during training. Experiments show that the proposed training strategy achieves remarkable performance and outperforms a state-of-the-art baseline in both naturalness and expressiveness. To our best knowledge, this is the first study to incorporate utterance level perceptual quality as a loss function into Tacotron training for improved expressiveness.<br>
 <br>
 <br>
           <div style="text-align: center; width: 1100px; border: green solid 1px;">
           	<img align="center" src="model.png"  width="600" height="600"  />
  				<br>
-                    Figure 1: xxxxxxxx.
+                    Figure 1: Overall framework of a  <i>Tacotron-PL</i> system in three stages: Stage I for training of style descriptor; Stage II for training of <i>Tacotron-PL</i>; Stage III for run-time inference. .
                     
           </div>
-			<br>
+			<br><br><br>
 
           <div style="text-align: center; width: 1100px; border: green solid 1px;">
           	<img align="center" src="Tacotron-PL.png"  width="1050" height="230"  />
  				<br>
-                    Figure 2: xxxxxxxx.
+                    Figure 2: Block diagram of the proposed training strategy, <i>Tacotron-PL</i>. A speech emotion recognition (SER) model is trained separately to serve as an auxiliary model to extract deep style features. A <i>style reconstruction loss</i>, Loss_style, is computed between the deep style features of the generated and reference speech at utterance-level.
                     
           </div>
 
@@ -91,7 +91,7 @@ We propose to train a Tacotron system using a combination of two objective funct
                   <div class="big-screen">
                     <br>
                     <h5>We develop five Tacotron-based TTS systems for a comparative study:</h5>
-                    <b> (a) Tacotron</b>: Tacotron trained with Loss_frame. <br>
+                    <b> (a) Tacotron</b>: Tacotron trained with Loss_frame <font color='blue'>[1,2]</font>.<br>
                     <b> (b) Tacotron-PL(L)</b>: Tacotron-PL with uses <b>low-level features</b> in Loss_Style. <br>
                     <b> (c) Tacotron-PL(M)</b>: Tacotron-PL with uses <b>middle-level features</b> in Loss_Style. <br>
                     <b> (d) Tacotron-PL(H)</b>: Tacotron-PL with uses <b>high-level features</b> in Loss_Style. <br>
@@ -99,11 +99,14 @@ We propose to train a Tacotron system using a combination of two objective funct
                     * <font color='blue'>low-level features, middle-level features and high-level features as shown in Fig3.  </font><br>
                     <div style="text-align: center; width: 1100px; border: green solid 0px;">
                     <img align="center" src="features.png"  width="600" height="150"  /><br>
-                         Figure 3: xxx
+                         Figure 3: Three level (low, middle and high) of deep style features extracted from SER-based style descriptors for computing style construction loss.
                 </div>
   
                    
                      <br /><br />
+                     <h3>Speech Samples:</h3>
+                     <br />
+                     <br />
                     <!--  Naturalness Evaluation -->
                     <table class="table">
                       
@@ -126,108 +129,108 @@ We propose to train a Tacotron system using a combination of two objective funct
                                   <th colspan=5 align="left"> [1] xxxxxxxxx</th>
 
                                 </tr> -->
-                                <tr>
+                                
+
+
+                                 <tr>
                                   <th scope="row">  [1]  </th>
                                  <td>
                                     <audio controls>
-                                      <source src="sample/.wav" type="audio/wav" />
+                                      <source src="sample/baseline/001-ss.wav" type="audio/wav" />
                                       Your browser does not support the audio element.
                                     </audio>
                                   </td>
                                   <td>
                                     <audio controls>
-                                      <source src="sample/.wav" type="audio/wav" />
+                                      <source src="sample/low-150k/001-ss.wav" type="audio/wav" />
                                       Your browser does not support the audio element.
                                     </audio>
                                   </td>
                                   <td>
                                     <audio controls>
-                                      <source src="sample/.wav" type="audio/wav" />
+                                      <source src="sample/middle-150k/001-ss.wav" type="audio/wav" />
                                       Your browser does not support the audio element.
                                     </audio>
                                   </td>
                                   <td>
                                     <audio controls>
-                                      <source src="sample/.wav" type="audio/wav" />
+                                      <source src="sample/high-150k/001-ss.wav" type="audio/wav" />
                                       Your browser does not support the audio element.
                                     </audio>
                                   </td>
                                   <td>
                                     <audio controls>
-                                      <source src="sample/.wav" type="audio/wav" />
+                                      <source src="sample/all-150k/001-ss.wav" type="audio/wav" />
                                       Your browser does not support the audio element.
                                     </audio>
                                   </td>
                                   
                                   </tr>
-
 
                                   <tr>
                                   <th scope="row">  [2]  </th>
                                  <td>
                                     <audio controls>
-                                      <source src="sample/.wav" type="audio/wav" />
+                                      <source src="sample/baseline/004-ss.wav" type="audio/wav" />
                                       Your browser does not support the audio element.
                                     </audio>
                                   </td>
                                   <td>
                                     <audio controls>
-                                      <source src="sample/.wav" type="audio/wav" />
+                                      <source src="sample/low-150k/004-ss.wav" type="audio/wav" />
                                       Your browser does not support the audio element.
                                     </audio>
                                   </td>
                                   <td>
                                     <audio controls>
-                                      <source src="sample/.wav" type="audio/wav" />
+                                      <source src="sample/middle-150k/004-ss.wav" type="audio/wav" />
                                       Your browser does not support the audio element.
                                     </audio>
                                   </td>
                                   <td>
                                     <audio controls>
-                                      <source src="sample/.wav" type="audio/wav" />
+                                      <source src="sample/high-150k/004-ss.wav" type="audio/wav" />
                                       Your browser does not support the audio element.
                                     </audio>
                                   </td>
                                   <td>
                                     <audio controls>
-                                      <source src="sample/.wav" type="audio/wav" />
+                                      <source src="sample/all-150k/004-ss.wav" type="audio/wav" />
                                       Your browser does not support the audio element.
                                     </audio>
                                   </td>
                                   
                                   </tr>
 
-
-
                                   <tr>
                                   <th scope="row">  [3]  </th>
                                  <td>
                                     <audio controls>
-                                      <source src="sample/.wav" type="audio/wav" />
+                                      <source src="sample/baseline/014-ss.wav" type="audio/wav" />
                                       Your browser does not support the audio element.
                                     </audio>
                                   </td>
                                   <td>
                                     <audio controls>
-                                      <source src="sample/.wav" type="audio/wav" />
+                                      <source src="sample/low-150k/014-ss.wav" type="audio/wav" />
                                       Your browser does not support the audio element.
                                     </audio>
                                   </td>
                                   <td>
                                     <audio controls>
-                                      <source src="sample/.wav" type="audio/wav" />
+                                      <source src="sample/middle-150k/014-ss.wav" type="audio/wav" />
                                       Your browser does not support the audio element.
                                     </audio>
                                   </td>
                                   <td>
                                     <audio controls>
-                                      <source src="sample/.wav" type="audio/wav" />
+                                      <source src="sample/high-150k/014-ss.wav" type="audio/wav" />
                                       Your browser does not support the audio element.
                                     </audio>
                                   </td>
                                   <td>
                                     <audio controls>
-                                      <source src="sample/.wav" type="audio/wav" />
+                                      <source src="sample/all-150k/014-ss.wav" type="audio/wav" />
                                       Your browser does not support the audio element.
                                     </audio>
                                   </td>
@@ -240,36 +243,37 @@ We propose to train a Tacotron system using a combination of two objective funct
                                   <th scope="row">  [4]  </th>
                                  <td>
                                     <audio controls>
-                                      <source src="sample/.wav" type="audio/wav" />
+                                      <source src="sample/baseline/000-ss.wav" type="audio/wav" />
                                       Your browser does not support the audio element.
                                     </audio>
                                   </td>
                                   <td>
                                     <audio controls>
-                                      <source src="sample/.wav" type="audio/wav" />
+                                      <source src="sample/low-150k/000-ss.wav" type="audio/wav" />
                                       Your browser does not support the audio element.
                                     </audio>
                                   </td>
                                   <td>
                                     <audio controls>
-                                      <source src="sample/.wav" type="audio/wav" />
+                                      <source src="sample/middle-150k/000-ss.wav" type="audio/wav" />
                                       Your browser does not support the audio element.
                                     </audio>
                                   </td>
                                   <td>
                                     <audio controls>
-                                      <source src="sample/.wav" type="audio/wav" />
+                                      <source src="sample/high-150k/000-ss.wav" type="audio/wav" />
                                       Your browser does not support the audio element.
                                     </audio>
                                   </td>
                                   <td>
                                     <audio controls>
-                                      <source src="sample/.wav" type="audio/wav" />
+                                      <source src="sample/all-150k/000-ss.wav" type="audio/wav" />
                                       Your browser does not support the audio element.
                                     </audio>
                                   </td>
                                   
                                   </tr>
+
 
 
 
@@ -277,110 +281,394 @@ We propose to train a Tacotron system using a combination of two objective funct
                                   <th scope="row">  [5]  </th>
                                  <td>
                                     <audio controls>
-                                      <source src="sample/.wav" type="audio/wav" />
+                                      <source src="sample/baseline/015-ss.wav" type="audio/wav" />
                                       Your browser does not support the audio element.
                                     </audio>
                                   </td>
                                   <td>
                                     <audio controls>
-                                      <source src="sample/.wav" type="audio/wav" />
+                                      <source src="sample/low-150k/015-ss.wav" type="audio/wav" />
                                       Your browser does not support the audio element.
                                     </audio>
                                   </td>
                                   <td>
                                     <audio controls>
-                                      <source src="sample/.wav" type="audio/wav" />
+                                      <source src="sample/middle-150k/015-ss.wav" type="audio/wav" />
                                       Your browser does not support the audio element.
                                     </audio>
                                   </td>
                                   <td>
                                     <audio controls>
-                                      <source src="sample/.wav" type="audio/wav" />
+                                      <source src="sample/high-150k/015-ss.wav" type="audio/wav" />
                                       Your browser does not support the audio element.
                                     </audio>
                                   </td>
                                   <td>
                                     <audio controls>
-                                      <source src="sample/.wav" type="audio/wav" />
+                                      <source src="sample/all-150k/015-ss.wav" type="audio/wav" />
                                       Your browser does not support the audio element.
                                     </audio>
                                   </td>
                                   
                                   </tr>
 
-
+                                   
 
                                   <tr>
                                   <th scope="row">  [6]  </th>
                                  <td>
                                     <audio controls>
-                                      <source src="sample/.wav" type="audio/wav" />
+                                      <source src="sample/baseline/021-ss.wav" type="audio/wav" />
                                       Your browser does not support the audio element.
                                     </audio>
                                   </td>
                                   <td>
                                     <audio controls>
-                                      <source src="sample/.wav" type="audio/wav" />
+                                      <source src="sample/low-150k/021-ss.wav" type="audio/wav" />
                                       Your browser does not support the audio element.
                                     </audio>
                                   </td>
                                   <td>
                                     <audio controls>
-                                      <source src="sample/.wav" type="audio/wav" />
+                                      <source src="sample/middle-150k/021-ss.wav" type="audio/wav" />
                                       Your browser does not support the audio element.
                                     </audio>
                                   </td>
                                   <td>
                                     <audio controls>
-                                      <source src="sample/.wav" type="audio/wav" />
+                                      <source src="sample/high-150k/021-ss.wav" type="audio/wav" />
                                       Your browser does not support the audio element.
                                     </audio>
                                   </td>
                                   <td>
                                     <audio controls>
-                                      <source src="sample/.wav" type="audio/wav" />
+                                      <source src="sample/all-150k/021-ss.wav" type="audio/wav" />
                                       Your browser does not support the audio element.
                                     </audio>
                                   </td>
                                   
                                   </tr>
 
-
-
+                                 
                                   <tr>
                                   <th scope="row">  [7]  </th>
                                  <td>
                                     <audio controls>
-                                      <source src="sample/.wav" type="audio/wav" />
+                                      <source src="sample/baseline/026-ss.wav" type="audio/wav" />
                                       Your browser does not support the audio element.
                                     </audio>
                                   </td>
                                   <td>
                                     <audio controls>
-                                      <source src="sample/.wav" type="audio/wav" />
+                                      <source src="sample/low-150k/026-ss.wav" type="audio/wav" />
                                       Your browser does not support the audio element.
                                     </audio>
                                   </td>
                                   <td>
                                     <audio controls>
-                                      <source src="sample/.wav" type="audio/wav" />
+                                      <source src="sample/middle-150k/026-ss.wav" type="audio/wav" />
                                       Your browser does not support the audio element.
                                     </audio>
                                   </td>
                                   <td>
                                     <audio controls>
-                                      <source src="sample/.wav" type="audio/wav" />
+                                      <source src="sample/high-150k/026-ss.wav" type="audio/wav" />
                                       Your browser does not support the audio element.
                                     </audio>
                                   </td>
                                   <td>
                                     <audio controls>
-                                      <source src="sample/.wav" type="audio/wav" />
+                                      <source src="sample/all-150k/026-ss.wav" type="audio/wav" />
                                       Your browser does not support the audio element.
                                     </audio>
                                   </td>
                                   
                                   </tr>
+
+                                  <tr>
+                                  <th scope="row">  [8]  </th>
+                                 <td>
+                                    <audio controls>
+                                      <source src="sample/baseline/027-ss.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="sample/low-150k/027-ss.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="sample/middle-150k/027-ss.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="sample/high-150k/027-ss.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="sample/all-150k/027-ss.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  
+                                  </tr>
+
+                                  <tr>
+                                  <th scope="row">  [9]  </th>
+                                 <td>
+                                    <audio controls>
+                                      <source src="sample/baseline/028-ss.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="sample/low-150k/028-ss.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="sample/middle-150k/028-ss.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="sample/high-150k/028-ss.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="sample/all-150k/028-ss.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  
+                                  </tr>
+
+                                  <tr>
+                                  <th scope="row">  [10]  </th>
+                                 <td>
+                                    <audio controls>
+                                      <source src="sample/baseline/029-ss.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="sample/low-150k/029-ss.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="sample/middle-150k/029-ss.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="sample/high-150k/029-ss.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="sample/all-150k/029-ss.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  
+                                  </tr>
+
+                                  <tr>
+                                  <th scope="row">  [11]  </th>
+                                 <td>
+                                    <audio controls>
+                                      <source src="sample/baseline/030-ss.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="sample/low-150k/030-ss.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="sample/middle-150k/030-ss.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="sample/high-150k/030-ss.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="sample/all-150k/030-ss.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  
+                                  </tr>
+
+                                  <tr>
+                                  <th scope="row">  [12]  </th>
+                                 <td>
+                                    <audio controls>
+                                      <source src="sample/baseline/032-ss.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="sample/low-150k/032-ss.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="sample/middle-150k/032-ss.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="sample/high-150k/032-ss.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="sample/all-150k/032-ss.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  
+                                  </tr>
+
+                                  <tr>
+                                  
+
+                                  <tr>
+                                  <th scope="row">  [13]  </th>
+                                 <td>
+                                    <audio controls>
+                                      <source src="sample/baseline/041-ss.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="sample/low-150k/041-ss.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="sample/middle-150k/041-ss.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="sample/high-150k/041-ss.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="sample/all-150k/041-ss.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  
+                                  </tr>
+
+                                  <tr>
+                                  <th scope="row">  [14]  </th>
+                                 <td>
+                                    <audio controls>
+                                      <source src="sample/baseline/042-ss.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="sample/low-150k/042-ss.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="sample/middle-150k/042-ss.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="sample/high-150k/042-ss.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="sample/all-150k/042-ss.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  
+                                  </tr>
+
+                                  <tr>
+                                  <th scope="row">  [15]  </th>
+                                 <td>
+                                    <audio controls>
+                                      <source src="sample/baseline/005-ss.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="sample/low-150k/005-ss.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="sample/middle-150k/005-ss.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="sample/high-150k/005-ss.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="sample/all-150k/005-ss.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  
+                                  </tr>
+
+                                
  
 
                       </tbody>
@@ -391,15 +679,17 @@ We propose to train a Tacotron system using a combination of two objective funct
                  
         </div>
       </div>
-      <!--<hr>
+      <hr>
        <div class="row" id="ref">
         <div class="col">
           <h5>References</h5>
-          
+          [1] Wang, Yuxuan, et al. "Tacotron: Towards End-to-End Speech Synthesis." Proc. Interspeech 2017 (2017): 4006-4010.
+          <br>
+          [2] Shen, Jonathan, et al. "Natural tts synthesis by conditioning wavenet on mel spectrogram predictions." Proc. ICASSP 2018 (2018): 4779-4783.
         
         </div>
       </div>
-      <hr>
+      <!--<hr>
       <div class="row" id="contact">
           <div class="col">
             <h2>Contact</h2>
